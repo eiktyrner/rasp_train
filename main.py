@@ -2,10 +2,18 @@ import requests
 import json
 import configparser 
 
+from AdaFruit_CharLCD import AdaFruit_CharLCD
+from time import sleep, strftime
+from datetime import datetime
+from subprocess import *
+
 # Parse config for API keys
 confParser = configparser.ConfigParser()
 confParser.read('apiKeys.cfg')
 apiTrafikverket = confParser["api"]["trafikverket"]
+
+# Setup
+lcd = AdaFruit_CharLCD()
 
 # Used for finding name of stations
 def searchStation(name):
@@ -42,10 +50,23 @@ def getNextDepartures(fromStation, toStation, count):
 	for item in r[:count]:
 		time = item['AnnonseradTidpunktAvgang']
 		time = time[11:16]
-		print (time, item['Till'])
-
+		r =  time, item['Till']
+	return r
 #Examples
 
 #getNextDepartures('Uppsala C', '\u00d6rbyhus', 5)
 #print("###############")
-#getNextDepartures('\u00d6rbyhus', 'Uppsala', 5)
+#getNextDepartures('\u00d6rbyhus', 'Uppsala', 1)
+
+lcd.begin(16,1)
+
+while 1:
+	lcd.clear()
+	departure = getNextDepartures('\u00d6rbyhus', 'Uppsala', 1)
+	
+	lcd.message(datetime.now().strftime('%b %d %H:%M:S\n'))
+	lcd.message('Next: %s' %(departure[0]) )
+	lcd.message('To: %s' %(departure[1]) )
+	lcd.message( 'No weather info atm' )
+
+	sleep(20)
