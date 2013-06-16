@@ -118,81 +118,81 @@ class Adafruit_CharLCD:
 
 
     def noDisplay(self): 
-    """ Turn the display off (quickly) """
+        """ Turn the display off (quickly) """
 
         self.displaycontrol &= ~self.LCD_DISPLAYON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def display(self):
-    """ Turn the display on (quickly) """
+        """ Turn the display on (quickly) """
 
         self.displaycontrol |= self.LCD_DISPLAYON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def noCursor(self):
-    """ Turns the underline cursor on/off """
+        """ Turns the underline cursor on/off """
 
         self.displaycontrol &= ~self.LCD_CURSORON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def cursor(self):
-    """ Cursor On """
+        """ Cursor On """
 
         self.displaycontrol |= self.LCD_CURSORON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def noBlink(self):
-    """ Turn on and off the blinking cursor """
+        """ Turn on and off the blinking cursor """
 
         self.displaycontrol &= ~self.LCD_BLINKON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def noBlink(self):
-    """ Turn on and off the blinking cursor """
+        """ Turn on and off the blinking cursor """
 
         self.displaycontrol &= ~self.LCD_BLINKON
         self.write4bits(self.LCD_DISPLAYCONTROL | self.displaycontrol)
 
 
     def DisplayLeft(self):
-    """ These commands scroll the display without changing the RAM """
+        """ These commands scroll the display without changing the RAM """
 
         self.write4bits(self.LCD_CURSORSHIFT | self.LCD_DISPLAYMOVE | self.LCD_MOVELEFT)
 
 
     def scrollDisplayRight(self):
-    """ These commands scroll the display without changing the RAM """
+        """ These commands scroll the display without changing the RAM """
 
         self.write4bits(self.LCD_CURSORSHIFT | self.LCD_DISPLAYMOVE | self.LCD_MOVERIGHT);
 
 
     def leftToRight(self):
-    """ This is for text that flows Left to Right """
+        """ This is for text that flows Left to Right """
 
         self.displaymode |= self.LCD_ENTRYLEFT
         self.write4bits(self.LCD_ENTRYMODESET | self.displaymode);
 
 
     def rightToLeft(self):
-    """ This is for text that flows Right to Left """
+        """ This is for text that flows Right to Left """
         self.displaymode &= ~self.LCD_ENTRYLEFT
         self.write4bits(self.LCD_ENTRYMODESET | self.displaymode)
 
 
     def autoscroll(self):
-    """ This will 'right justify' text from the cursor """
+        """ This will 'right justify' text from the cursor """
 
         self.displaymode |= self.LCD_ENTRYSHIFTINCREMENT
         self.write4bits(self.LCD_ENTRYMODESET | self.displaymode)
 
 
     def noAutoscroll(self): 
-    """ This will 'left justify' text from the cursor """
+        """ This will 'left justify' text from the cursor """
 
         self.displaymode &= ~self.LCD_ENTRYSHIFTINCREMENT
         self.write4bits(self.LCD_ENTRYMODESET | self.displaymode)
