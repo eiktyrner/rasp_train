@@ -13,7 +13,7 @@ confParser.read('apiKeys.cfg')
 apiTrafikverket = confParser["api"]["trafikverket"]
 
 # Setup
-lcd = AdaFruit_CharLCD()
+lcd = Adafruit_CharLCD()
 
 # Used for finding name of stations
 def searchStation(name):
