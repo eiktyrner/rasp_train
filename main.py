@@ -2,7 +2,7 @@ import requests
 import json
 import configparser 
 
-from AdaFruit_CharLCD import AdaFruit_CharLCD
+from Adafruit_CharLCD import Adafruit_CharLCD
 from time import sleep, strftime
 from datetime import datetime
 from subprocess import *
